@@ -30,23 +30,41 @@
     operatorPressed = FALSE;
 }
 
+- (IBAction)divicePressed:(id)sender {
+    op = '/';
+    operatorPressed = TRUE;
+}
+
+- (IBAction)multiplyPressed:(id)sender {
+    op = '*';
+    operatorPressed = TRUE;
+}
+
 - (IBAction)addPressed:(id)sender {
-    add = TRUE;
+    op = '+';
     operatorPressed = TRUE;
 }
 
 - (IBAction)subtractPressed:(id)sender {
-    add = FALSE;
+    op = '-';
     operatorPressed = TRUE;
 }
 
 - (IBAction)equalsPressed:(id)sender {
-    if (add == FALSE) {
+    if (op == '-') {
         int outputNum = [firstEntry intValue] - [secondEntry intValue];
         _labelOutput.text = [NSString stringWithFormat: @"%i", outputNum];
-    } else {
+    } else if (op == '+') {
         int outputNum = [firstEntry intValue] + [secondEntry intValue];
         _labelOutput.text = [NSString stringWithFormat: @"%i", outputNum];
+        
+    } else if (op == '*') {
+        int outputNum = [firstEntry intValue] * [secondEntry intValue];
+        _labelOutput.text = [NSString stringWithFormat: @"%i", outputNum];
+    } else {
+        int outputNum = [firstEntry intValue] / [secondEntry intValue];
+        int remainder = [firstEntry intValue] % [secondEntry intValue];
+        _labelOutput.text = [NSString stringWithFormat: @"%i %s %i ", outputNum, "R: ", remainder];
         
     }
     operatorPressed = FALSE;

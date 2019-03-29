@@ -10,13 +10,15 @@
 
 @interface ViewController : UIViewController {
     bool operatorPressed;
-    bool add;
+    char op;
     NSString *firstEntry;
     NSString *secondEntry;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelOutput;
 
 - (IBAction)clearPressed:(id)sender;
+- (IBAction)divicePressed:(id)sender;
+- (IBAction)multiplyPressed:(id)sender;
 
 - (IBAction)addPressed:(id)sender;
 
